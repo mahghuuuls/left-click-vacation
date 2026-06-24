@@ -29,16 +29,27 @@ public class ClientAutomationController {
 
     public void onToggleKeyPressed() {
         if (state == AutomationState.ENABLED) {
-            pendingBinding = null;
-            activeBinding = null;
-            NetworkHandler.sendToServer(new MessageToggleRequest(false, getSelectedHotbarSlot()));
+            if (isActivationItemSelected()) {
+                pendingBinding = null;
+                activeBinding = null;
+                NetworkHandler.sendToServer(new MessageToggleRequest(false, getSelectedHotbarSlot()));
+                return;
+            }
+
+            requestEnableForCurrentSelection(false);
             return;
         }
 
+        requestEnableForCurrentSelection(true);
+    }
+
+    private void requestEnableForCurrentSelection(boolean clearActiveBindingOnRejection) {
         DisableReason localRejection = getLocalEnableRejection();
         if (localRejection != DisableReason.NONE) {
             pendingBinding = null;
-            activeBinding = null;
+            if (clearActiveBindingOnRejection) {
+                activeBinding = null;
+            }
             showState(AutomationState.DISABLED, localRejection);
             return;
         }
@@ -63,7 +74,7 @@ public class ClientAutomationController {
         return state == AutomationState.ENABLED;
     }
 
-    public boolean canDriveBlockBreaking() {
+    public boolean isActivationItemSelected() {
         Minecraft minecraft = Minecraft.getMinecraft();
         EntityPlayerSP player = minecraft.player;
         return isEnabled()
