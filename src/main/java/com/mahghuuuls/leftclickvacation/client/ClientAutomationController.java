@@ -15,6 +15,8 @@ public class ClientAutomationController {
 
     private boolean serverSupported;
     private AutomationState state = AutomationState.DISABLED;
+    private ClientActivationBinding pendingBinding;
+    private ClientActivationBinding activeBinding;
     private HudNotifier hudNotifier;
 
     public void setHudNotifier(HudNotifier hudNotifier) {
@@ -27,22 +29,48 @@ public class ClientAutomationController {
 
     public void onToggleKeyPressed() {
         if (state == AutomationState.ENABLED) {
+            pendingBinding = null;
+            activeBinding = null;
             NetworkHandler.sendToServer(new MessageToggleRequest(false, getSelectedHotbarSlot()));
             return;
         }
 
         DisableReason localRejection = getLocalEnableRejection();
         if (localRejection != DisableReason.NONE) {
+            pendingBinding = null;
+            activeBinding = null;
             showState(AutomationState.DISABLED, localRejection);
             return;
         }
 
-        NetworkHandler.sendToServer(new MessageToggleRequest(true, getSelectedHotbarSlot()));
+        int selectedHotbarSlot = getSelectedHotbarSlot();
+        pendingBinding = bindCurrentSelection(selectedHotbarSlot);
+        NetworkHandler.sendToServer(new MessageToggleRequest(true, selectedHotbarSlot));
     }
 
     public void applyServerState(AutomationState state, DisableReason reason) {
         this.state = state;
+        if (state == AutomationState.ENABLED) {
+            activeBinding = pendingBinding != null ? pendingBinding : bindCurrentSelection(getSelectedHotbarSlot());
+        } else {
+            activeBinding = null;
+        }
+        pendingBinding = null;
         showState(state, reason);
+    }
+
+    public boolean isEnabled() {
+        return state == AutomationState.ENABLED;
+    }
+
+    public boolean canDriveBlockBreaking() {
+        Minecraft minecraft = Minecraft.getMinecraft();
+        EntityPlayerSP player = minecraft.player;
+        return isEnabled()
+                && player != null
+                && activeBinding != null
+                && player.inventory.currentItem == activeBinding.hotbarSlot()
+                && activeBinding.matchesBoundSlot(player.inventory.getStackInSlot(activeBinding.hotbarSlot()));
     }
 
     private DisableReason getLocalEnableRejection() {
@@ -84,6 +112,20 @@ public class ClientAutomationController {
         return minecraft.player.inventory.currentItem;
     }
 
+    private ClientActivationBinding bindCurrentSelection(int selectedHotbarSlot) {
+        Minecraft minecraft = Minecraft.getMinecraft();
+        if (minecraft.player == null) {
+            return null;
+        }
+
+        ItemStack stack = minecraft.player.inventory.getStackInSlot(selectedHotbarSlot);
+        if (stack.isEmpty()) {
+            return null;
+        }
+
+        return ClientActivationBinding.bind(selectedHotbarSlot, stack);
+    }
+
     private void showState(AutomationState state, DisableReason reason) {
         if (hudNotifier != null) {
             hudNotifier.show(state, reason);
@@ -94,11 +136,15 @@ public class ClientAutomationController {
     public void onClientConnected(FMLNetworkEvent.ClientConnectedToServerEvent event) {
         serverSupported = false;
         state = AutomationState.DISABLED;
+        pendingBinding = null;
+        activeBinding = null;
     }
 
     @SubscribeEvent
     public void onClientDisconnected(FMLNetworkEvent.ClientDisconnectionFromServerEvent event) {
         serverSupported = false;
         state = AutomationState.DISABLED;
+        pendingBinding = null;
+        activeBinding = null;
     }
 }

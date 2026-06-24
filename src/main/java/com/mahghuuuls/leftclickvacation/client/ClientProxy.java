@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class ClientProxy extends ServerProxy {
 
     private final ClientAutomationController automationController = new ClientAutomationController();
+    private final ClientBlockBreakDriver blockBreakDriver = new ClientBlockBreakDriver(automationController);
     private final HudNotifier hudNotifier = new HudNotifier();
     private final KeyBindingHandler keyBindingHandler = new KeyBindingHandler(automationController);
 
@@ -20,6 +21,7 @@ public class ClientProxy extends ServerProxy {
         ClientRegistry.registerKeyBinding(keyBindingHandler.getToggleKey());
         MinecraftForge.EVENT_BUS.register(keyBindingHandler);
         MinecraftForge.EVENT_BUS.register(automationController);
+        MinecraftForge.EVENT_BUS.register(blockBreakDriver);
         MinecraftForge.EVENT_BUS.register(hudNotifier);
         automationController.setHudNotifier(hudNotifier);
     }
