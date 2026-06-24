@@ -44,10 +44,6 @@ public class HudNotifier {
                 return "Hold an item to enable auto click.";
             case UNSUPPORTED_GAME_MODE:
                 return "Auto click only works in Survival or Adventure.";
-            case SERVER_SUPPORT_REQUIRED:
-                return "Auto click requires server support.";
-            case SERVER_DENIED:
-                return "Auto click denied by server.";
             case ACTIVATION_ITEM_LOST:
                 return "Auto click disabled: item changed.";
             case PLAYER_DIED:

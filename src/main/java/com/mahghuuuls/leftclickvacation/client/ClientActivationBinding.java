@@ -1,5 +1,6 @@
 package com.mahghuuuls.leftclickvacation.client;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public final class ClientActivationBinding {
@@ -20,7 +21,27 @@ public final class ClientActivationBinding {
         return hotbarSlot;
     }
 
+    public boolean isActivationItemInPossession(EntityPlayer player) {
+        for (ItemStack stack : player.inventory.mainInventory) {
+            if (matchesActivationItem(stack)) {
+                return true;
+            }
+        }
+
+        for (ItemStack stack : player.inventory.offHandInventory) {
+            if (matchesActivationItem(stack)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean matchesBoundSlot(ItemStack currentStack) {
+        return matchesActivationItem(currentStack);
+    }
+
+    private boolean matchesActivationItem(ItemStack currentStack) {
         if (currentStack.isEmpty()) {
             return false;
         }
