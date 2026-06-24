@@ -21,7 +21,7 @@ public class HudNotifier {
             if (!config.showEnabledMessage()) {
                 return;
             }
-            showFixed("Left Click Vacation enabled.", config.fixedHudDurationSeconds());
+            showFixed("Auto click enabled.", config.fixedHudDurationSeconds());
             return;
         }
 
@@ -39,18 +39,26 @@ public class HudNotifier {
     private String disabledMessage(DisableReason reason) {
         switch (reason) {
             case TOGGLED_OFF:
-                return "Left Click Vacation disabled.";
+                return "Auto click disabled.";
             case HELD_ITEM_REQUIRED:
-                return "Left Click Vacation requires an item in your main hand.";
+                return "Hold an item to enable auto click.";
             case UNSUPPORTED_GAME_MODE:
-                return "Left Click Vacation only works in Survival or Adventure.";
+                return "Auto click only works in Survival or Adventure.";
             case SERVER_SUPPORT_REQUIRED:
-                return "Left Click Vacation requires server support.";
+                return "Auto click requires server support.";
             case SERVER_DENIED:
-                return "Left Click Vacation was denied by the server.";
+                return "Auto click denied by server.";
+            case ACTIVATION_ITEM_LOST:
+                return "Auto click disabled: item changed.";
+            case PLAYER_DIED:
+                return "Auto click disabled: you died.";
+            case DIMENSION_CHANGED:
+                return "Auto click disabled: dimension changed.";
+            case WORLD_UNLOADED:
+                return "Auto click disabled: world unloaded.";
             case NONE:
             default:
-                return "Left Click Vacation disabled.";
+                return "Auto click disabled.";
         }
     }
 
