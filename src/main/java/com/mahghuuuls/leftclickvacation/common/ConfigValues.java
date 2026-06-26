@@ -6,13 +6,15 @@ public final class ConfigValues {
     private final boolean showDisabledMessage;
     private final boolean showPausedMessage;
     private final int fixedHudDurationSeconds;
+    private final int gracePeriodSeconds;
 
     public ConfigValues(boolean showEnabledMessage, boolean showDisabledMessage, boolean showPausedMessage,
-            int fixedHudDurationSeconds) {
+            int fixedHudDurationSeconds, int gracePeriodSeconds) {
         this.showEnabledMessage = showEnabledMessage;
         this.showDisabledMessage = showDisabledMessage;
         this.showPausedMessage = showPausedMessage;
         this.fixedHudDurationSeconds = fixedHudDurationSeconds;
+        this.gracePeriodSeconds = gracePeriodSeconds;
     }
 
     public boolean showEnabledMessage() {
@@ -29,5 +31,9 @@ public final class ConfigValues {
 
     public int fixedHudDurationSeconds() {
         return fixedHudDurationSeconds;
+    }
+
+    public int gracePeriodSeconds() {
+        return gracePeriodSeconds;
     }
 }

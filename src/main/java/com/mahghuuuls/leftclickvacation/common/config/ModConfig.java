@@ -23,8 +23,12 @@ public final class ModConfig {
                 hud.showEnabledMessage,
                 hud.showDisabledMessage,
                 hud.showPausedMessage,
-                hud.fixedMessageDurationSeconds);
+                hud.fixedMessageDurationSeconds,
+                automation.gracePeriodSeconds);
     }
+
+    @Config.Comment("Automation behavior settings.")
+    public static Automation automation = new Automation();
 
     public static final class Hud {
 
@@ -42,5 +46,14 @@ public final class ModConfig {
                 min = ConfigSanitizer.MIN_FIXED_HUD_DURATION_SECONDS,
                 max = ConfigSanitizer.MAX_FIXED_HUD_DURATION_SECONDS)
         public int fixedMessageDurationSeconds = ConfigSanitizer.DEFAULT_FIXED_HUD_DURATION_SECONDS;
+    }
+
+    public static final class Automation {
+
+        @Config.Comment("Seconds automation may remain paused after switching away from the activation item.")
+        @Config.RangeInt(
+                min = ConfigSanitizer.MIN_GRACE_PERIOD_SECONDS,
+                max = ConfigSanitizer.MAX_GRACE_PERIOD_SECONDS)
+        public int gracePeriodSeconds = ConfigSanitizer.DEFAULT_GRACE_PERIOD_SECONDS;
     }
 }

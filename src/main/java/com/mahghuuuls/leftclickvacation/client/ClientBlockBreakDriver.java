@@ -26,7 +26,7 @@ public class ClientBlockBreakDriver {
         }
 
         Minecraft minecraft = Minecraft.getMinecraft();
-        if (!automationController.isActivationItemSelected()) {
+        if (!automationController.isActiveAndActivationItemSelected()) {
             resetDrivenBlockBreaking(minecraft);
             return;
         }

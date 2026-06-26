@@ -22,6 +22,10 @@ public final class ClientActivationBinding {
     }
 
     public boolean isActivationItemInPossession(EntityPlayer player) {
+        if (matchesActivationItem(player.inventory.getItemStack())) {
+            return true;
+        }
+
         for (ItemStack stack : player.inventory.mainInventory) {
             if (matchesActivationItem(stack)) {
                 return true;

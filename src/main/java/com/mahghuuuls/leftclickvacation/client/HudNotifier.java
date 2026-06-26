@@ -14,26 +14,57 @@ public class HudNotifier {
 
     private String message;
     private int ticksRemaining;
+    private boolean persistent;
 
     public void show(AutomationState state, DisableReason reason) {
         ConfigValues config = ModConfig.values();
         if (state == AutomationState.ENABLED) {
             if (!config.showEnabledMessage()) {
+                clear();
                 return;
             }
             showFixed("Auto click enabled.", config.fixedHudDurationSeconds());
             return;
         }
 
+        if (state == AutomationState.PAUSED) {
+            if (!config.showPausedMessage()) {
+                clear();
+                return;
+            }
+            showPersistent("Auto click paused.");
+            return;
+        }
+
         if (!config.showDisabledMessage()) {
+            clear();
             return;
         }
         showFixed(disabledMessage(reason), config.fixedHudDurationSeconds());
     }
 
+    public void clearPaused() {
+        if (persistent) {
+            clear();
+        }
+    }
+
     private void showFixed(String message, int seconds) {
         this.message = message;
         this.ticksRemaining = seconds * 20;
+        this.persistent = false;
+    }
+
+    private void showPersistent(String message) {
+        this.message = message;
+        this.ticksRemaining = 0;
+        this.persistent = true;
+    }
+
+    private void clear() {
+        this.message = null;
+        this.ticksRemaining = 0;
+        this.persistent = false;
     }
 
     private String disabledMessage(DisableReason reason) {
@@ -46,6 +77,8 @@ public class HudNotifier {
                 return "Auto click only works in Survival or Adventure.";
             case ACTIVATION_ITEM_LOST:
                 return "Auto click disabled: item changed.";
+            case GRACE_EXPIRED:
+                return "Auto click disabled: grace period expired.";
             case PLAYER_DIED:
                 return "Auto click disabled: you died.";
             case DIMENSION_CHANGED:
@@ -60,18 +93,19 @@ public class HudNotifier {
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || ticksRemaining <= 0) {
+        if (event.phase != TickEvent.Phase.END || persistent || ticksRemaining <= 0) {
             return;
         }
         ticksRemaining--;
         if (ticksRemaining <= 0) {
-            message = null;
+            clear();
         }
     }
 
     @SubscribeEvent
     public void onRenderOverlay(RenderGameOverlayEvent.Post event) {
-        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL || message == null || ticksRemaining <= 0) {
+        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL || message == null
+                || (!persistent && ticksRemaining <= 0)) {
             return;
         }
 
