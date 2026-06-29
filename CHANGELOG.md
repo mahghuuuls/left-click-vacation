@@ -5,17 +5,19 @@
 ### Added
 
 - Initial Forge 1.12.2 release.
-- Configurable `Toggle Auto Mine` keybind, unbound by default.
+- Configurable `Toggle Auto Click Mode` keybind, unbound by default.
 - Controlled automatic block breaking for valid block targets.
 - Activation requires a non-empty main-hand item.
 - Survival and Adventure mode support.
 - Practical activation-item tracking that tolerates normal durability loss.
-- Pause and resume behavior when switching away from the activation item.
-- Configurable grace period, defaulting to 20 seconds.
-- Rebinding behavior when pressing the toggle key while holding a different valid item.
+- Keybind arming for the held item, with normal left-click toggling auto click on or off.
+- Auto click turns off when switching away from the activation item, while the mod remains armed for that item when possible.
+- Manual restart after returning to the armed item.
 - Entity-target safety so automation does not generate entity attacks.
-- Configurable HUD messages for enabled, paused, and disabled states.
-- Config sanitization for HUD duration and grace-period values.
+- Primary HUD component showing the armed item icon plus green `ON` or red `OFF` status.
+- Optional debug HUD messages, disabled by default.
+- Configurable HUD component position and scale.
+- Config sanitization for HUD position, scale, debug message duration, and grace-period compatibility values.
 - Client-first multiplayer behavior that does not require server-side mod support.
 
 ### Compatibility
