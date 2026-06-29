@@ -6,14 +6,23 @@ public final class ConfigValues {
     private final boolean showDisabledMessage;
     private final boolean showPausedMessage;
     private final int fixedHudDurationSeconds;
+    private final boolean showDebugMessages;
+    private final int hudX;
+    private final int hudY;
+    private final int hudScalePercent;
     private final int gracePeriodSeconds;
 
     public ConfigValues(boolean showEnabledMessage, boolean showDisabledMessage, boolean showPausedMessage,
-            int fixedHudDurationSeconds, int gracePeriodSeconds) {
+            int fixedHudDurationSeconds, boolean showDebugMessages, int hudX, int hudY, int hudScalePercent,
+            int gracePeriodSeconds) {
         this.showEnabledMessage = showEnabledMessage;
         this.showDisabledMessage = showDisabledMessage;
         this.showPausedMessage = showPausedMessage;
         this.fixedHudDurationSeconds = fixedHudDurationSeconds;
+        this.showDebugMessages = showDebugMessages;
+        this.hudX = hudX;
+        this.hudY = hudY;
+        this.hudScalePercent = hudScalePercent;
         this.gracePeriodSeconds = gracePeriodSeconds;
     }
 
@@ -31,6 +40,22 @@ public final class ConfigValues {
 
     public int fixedHudDurationSeconds() {
         return fixedHudDurationSeconds;
+    }
+
+    public boolean showDebugMessages() {
+        return showDebugMessages;
+    }
+
+    public int hudX() {
+        return hudX;
+    }
+
+    public int hudY() {
+        return hudY;
+    }
+
+    public int hudScalePercent() {
+        return hudScalePercent;
     }
 
     public int gracePeriodSeconds() {

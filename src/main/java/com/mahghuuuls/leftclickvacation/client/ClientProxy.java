@@ -11,6 +11,7 @@ public class ClientProxy extends ServerProxy {
     private final ClientBlockBreakDriver blockBreakDriver = new ClientBlockBreakDriver(automationController);
     private final ClientConfigEventHandler configEventHandler = new ClientConfigEventHandler();
     private final HudNotifier hudNotifier = new HudNotifier();
+    private final HudStatusRenderer hudStatusRenderer = new HudStatusRenderer(automationController);
     private final KeyBindingHandler keyBindingHandler = new KeyBindingHandler(automationController);
     private final MouseInputHandler mouseInputHandler = new MouseInputHandler(automationController);
 
@@ -24,6 +25,7 @@ public class ClientProxy extends ServerProxy {
         MinecraftForge.EVENT_BUS.register(blockBreakDriver);
         MinecraftForge.EVENT_BUS.register(configEventHandler);
         MinecraftForge.EVENT_BUS.register(hudNotifier);
+        MinecraftForge.EVENT_BUS.register(hudStatusRenderer);
         automationController.setHudNotifier(hudNotifier);
     }
 }

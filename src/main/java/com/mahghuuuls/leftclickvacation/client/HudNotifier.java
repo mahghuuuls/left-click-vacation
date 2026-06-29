@@ -18,7 +18,7 @@ public class HudNotifier {
 
     public void showModEnabled() {
         ConfigValues config = ModConfig.values();
-        if (!config.showEnabledMessage()) {
+        if (!config.showDebugMessages() || !config.showEnabledMessage()) {
             clear();
             return;
         }
@@ -27,6 +27,11 @@ public class HudNotifier {
 
     public void show(AutomationState state, DisableReason reason) {
         ConfigValues config = ModConfig.values();
+        if (!config.showDebugMessages()) {
+            clear();
+            return;
+        }
+
         if (state == AutomationState.ENABLED) {
             if (!config.showEnabledMessage()) {
                 clear();

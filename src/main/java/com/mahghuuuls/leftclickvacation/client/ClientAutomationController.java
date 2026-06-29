@@ -112,6 +112,17 @@ public class ClientAutomationController {
         return modEnabled;
     }
 
+    public boolean isAutoClickActive() {
+        return state == AutomationState.ENABLED;
+    }
+
+    public ItemStack getArmedItemStack() {
+        if (!modEnabled || activeBinding == null) {
+            return ItemStack.EMPTY;
+        }
+        return activeBinding.activationStack();
+    }
+
     public boolean isActivationItemSelected() {
         Minecraft minecraft = Minecraft.getMinecraft();
         EntityPlayerSP player = minecraft.player;

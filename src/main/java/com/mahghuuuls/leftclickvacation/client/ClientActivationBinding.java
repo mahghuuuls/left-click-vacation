@@ -21,6 +21,10 @@ public final class ClientActivationBinding {
         return hotbarSlot;
     }
 
+    public ItemStack activationStack() {
+        return activationSnapshot.copy();
+    }
+
     public boolean isActivationItemInPossession(EntityPlayer player) {
         if (matchesActivationItem(player.inventory.getItemStack())) {
             return true;
