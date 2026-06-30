@@ -1,7 +1,7 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
-import com.mahghuuuls.leftclickvacation.Tags;
-import com.mahghuuuls.leftclickvacation.common.config.ModConfig;
+import com.mahghuuuls.leftclickassist.Tags;
+import com.mahghuuuls.leftclickassist.common.config.ModConfig;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 

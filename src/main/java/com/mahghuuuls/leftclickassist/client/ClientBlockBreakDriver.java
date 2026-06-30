@@ -1,4 +1,4 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

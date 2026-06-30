@@ -1,4 +1,4 @@
-package com.mahghuuuls.leftclickvacation.serveronly;
+package com.mahghuuuls.leftclickassist.serveronly;
 
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 

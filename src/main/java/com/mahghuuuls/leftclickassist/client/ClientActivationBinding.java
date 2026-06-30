@@ -1,4 +1,4 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

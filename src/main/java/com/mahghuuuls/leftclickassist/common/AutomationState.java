@@ -1,4 +1,4 @@
-package com.mahghuuuls.leftclickvacation.common;
+package com.mahghuuuls.leftclickassist.common;
 
 public enum AutomationState {
     DISABLED,

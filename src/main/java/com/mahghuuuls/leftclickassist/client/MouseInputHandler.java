@@ -1,4 +1,4 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

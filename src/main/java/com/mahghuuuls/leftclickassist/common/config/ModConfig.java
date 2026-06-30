@@ -1,7 +1,7 @@
-package com.mahghuuuls.leftclickvacation.common.config;
+package com.mahghuuuls.leftclickassist.common.config;
 
-import com.mahghuuuls.leftclickvacation.Tags;
-import com.mahghuuuls.leftclickvacation.common.ConfigValues;
+import com.mahghuuuls.leftclickassist.Tags;
+import com.mahghuuuls.leftclickassist.common.ConfigValues;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 

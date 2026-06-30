@@ -1,6 +1,6 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
-import com.mahghuuuls.leftclickvacation.Tags;
+import com.mahghuuuls.leftclickassist.Tags;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;

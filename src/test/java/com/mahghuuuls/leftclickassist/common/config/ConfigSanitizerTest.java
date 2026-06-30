@@ -1,6 +1,6 @@
-package com.mahghuuuls.leftclickvacation.common.config;
+package com.mahghuuuls.leftclickassist.common.config;
 
-import com.mahghuuuls.leftclickvacation.common.ConfigValues;
+import com.mahghuuuls.leftclickassist.common.ConfigValues;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

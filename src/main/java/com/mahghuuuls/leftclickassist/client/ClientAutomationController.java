@@ -1,7 +1,7 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
-import com.mahghuuuls.leftclickvacation.common.AutomationState;
-import com.mahghuuuls.leftclickvacation.common.DisableReason;
+import com.mahghuuuls.leftclickassist.common.AutomationState;
+import com.mahghuuuls.leftclickassist.common.DisableReason;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.ItemStack;

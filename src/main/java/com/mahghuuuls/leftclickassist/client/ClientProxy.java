@@ -1,6 +1,6 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
-import com.mahghuuuls.leftclickvacation.serveronly.ServerProxy;
+import com.mahghuuuls.leftclickassist.serveronly.ServerProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

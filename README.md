@@ -1,4 +1,4 @@
-# Left Click Vacation
+# Left Click Assist
 
 Take a break from holding left click.
 
@@ -39,5 +39,5 @@ Some servers may consider automatic block breaking to be cheating or otherwise a
 
 ## Links
 
-- Source: https://github.com/mahghuuuls/left-click-vacation
-- Issues: https://github.com/mahghuuuls/left-click-vacation/issues
+- Source: https://github.com/mahghuuuls/left-click-assist
+- Issues: https://github.com/mahghuuuls/left-click-assist/issues

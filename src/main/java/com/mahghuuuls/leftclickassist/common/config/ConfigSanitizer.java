@@ -1,7 +1,7 @@
-package com.mahghuuuls.leftclickvacation.common.config;
+package com.mahghuuuls.leftclickassist.common.config;
 
-import com.mahghuuuls.leftclickvacation.LeftClickVacationMod;
-import com.mahghuuuls.leftclickvacation.common.ConfigValues;
+import com.mahghuuuls.leftclickassist.LeftClickAssistMod;
+import com.mahghuuuls.leftclickassist.common.ConfigValues;
 
 public final class ConfigSanitizer {
 
@@ -28,35 +28,35 @@ public final class ConfigSanitizer {
         int sanitizedDuration = clamp(fixedHudDurationSeconds, MIN_FIXED_HUD_DURATION_SECONDS,
                 MAX_FIXED_HUD_DURATION_SECONDS);
         if (sanitizedDuration != fixedHudDurationSeconds) {
-            LeftClickVacationMod.LOGGER.warn(
+            LeftClickAssistMod.LOGGER.warn(
                     "Invalid HUD message duration {}. Using clamped value {}.",
                     fixedHudDurationSeconds,
                     sanitizedDuration);
         }
         int sanitizedHudX = clamp(hudX, MIN_HUD_POSITION, MAX_HUD_POSITION);
         if (sanitizedHudX != hudX) {
-            LeftClickVacationMod.LOGGER.warn(
+            LeftClickAssistMod.LOGGER.warn(
                     "Invalid HUD component X position {}. Using clamped value {}.",
                     hudX,
                     sanitizedHudX);
         }
         int sanitizedHudY = clamp(hudY, MIN_HUD_POSITION, MAX_HUD_POSITION);
         if (sanitizedHudY != hudY) {
-            LeftClickVacationMod.LOGGER.warn(
+            LeftClickAssistMod.LOGGER.warn(
                     "Invalid HUD component Y position {}. Using clamped value {}.",
                     hudY,
                     sanitizedHudY);
         }
         int sanitizedHudScalePercent = clamp(hudScalePercent, MIN_HUD_SCALE_PERCENT, MAX_HUD_SCALE_PERCENT);
         if (sanitizedHudScalePercent != hudScalePercent) {
-            LeftClickVacationMod.LOGGER.warn(
+            LeftClickAssistMod.LOGGER.warn(
                     "Invalid HUD component scale {}. Using clamped value {}.",
                     hudScalePercent,
                     sanitizedHudScalePercent);
         }
         int sanitizedGracePeriod = clamp(gracePeriodSeconds, MIN_GRACE_PERIOD_SECONDS, MAX_GRACE_PERIOD_SECONDS);
         if (sanitizedGracePeriod != gracePeriodSeconds) {
-            LeftClickVacationMod.LOGGER.warn(
+            LeftClickAssistMod.LOGGER.warn(
                     "Invalid grace period {}. Using clamped value {}.",
                     gracePeriodSeconds,
                     sanitizedGracePeriod);

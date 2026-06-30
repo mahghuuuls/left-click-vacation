@@ -1,7 +1,7 @@
-package com.mahghuuuls.leftclickvacation.client;
+package com.mahghuuuls.leftclickassist.client;
 
-import com.mahghuuuls.leftclickvacation.common.ConfigValues;
-import com.mahghuuuls.leftclickvacation.common.config.ModConfig;
+import com.mahghuuuls.leftclickassist.common.ConfigValues;
+import com.mahghuuuls.leftclickassist.common.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
